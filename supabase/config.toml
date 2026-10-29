@@ -1,5 +1,5 @@
 # Replace with the new project's ref after creating/linking it.
-project_id = "YOUR_NEW_PROJECT_REF"
+project_id = "kbcdzxoniaonymsmdevz"
 
 [functions.student-score-lookup]
 verify_jwt = false
