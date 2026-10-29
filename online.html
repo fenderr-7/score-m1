@@ -81,7 +81,8 @@ $('resetForm').addEventListener('submit',async e=>{
     notice('resetMsg',msg,'error');
   }finally{busy(btn,false,'บันทึกรหัสผ่านใหม่')}
 });
-$('logout').addEventListener('click',async()=>{await sb.auth.signOut();user=null;$('teacherArea').classList.add('hidden');$('loginArea').classList.remove('hidden');$('studentLookup').classList.remove('hidden');$('resetArea').classList.add('hidden');$('logout').classList.add('hidden')});
+$('changePassword').addEventListener('click',()=>{showRecovery();notice('resetMsg','ตั้งรหัสผ่านใหม่สำหรับบัญชีครูได้ที่นี่','')});
+$('logout').addEventListener('click',async()=>{await sb.auth.signOut();user=null;$('teacherArea').classList.add('hidden');$('loginArea').classList.remove('hidden');$('studentLookup').classList.remove('hidden');$('resetArea').classList.add('hidden');$('logout').classList.add('hidden');$('changePassword').classList.add('hidden')});
 sb.auth.getSession().then(({data})=>{if(data.session&&!hasAuthCallback&&!recoveryMode)enterTeacher(data.session.user).catch(e=>notice('teacherMsg',friendly(e),'error'))});
 $('reload').addEventListener('click',loadAll);$('classSelect').addEventListener('change',async()=>{classId=$('classSelect').value;setSelects();await loadData()});$('subjectSelect').addEventListener('change',async()=>{subjectId=$('subjectSelect').value;await loadData()});
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('hidden',p.id!=='panel-'+b.dataset.tab))}));
