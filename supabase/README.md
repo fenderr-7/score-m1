@@ -37,3 +37,18 @@ supabase functions deploy student-score-lookup
 
 ## 6. ทดสอบความปลอดภัย
 ตรวจ Security Advisors, RLS, การจำกัดห้องของครู, PIN ผิด, และยืนยันนักเรียนเห็นเฉพาะคะแนนตัวเองผ่าน Edge Function
+
+
+## Create the initial teacher account
+1. In Supabase Dashboard → Authentication → Users, add/invite `phuwanet.2543@hongson.ac.th` and complete password setup.
+2. Copy that user's UUID.
+3. In SQL Editor for project `score-phuwanat-m1`, run the following after replacing `TEACHER-UUID`:
+
+```sql
+insert into public.score_profiles (user_id, full_name, role)
+values ('TEACHER-UUID', 'ครูภูวเนศ อิทธิสิริศักดิ์', 'teacher')
+on conflict (user_id) do update
+set full_name = excluded.full_name, role = excluded.role;
+```
+
+Do not grant teacher role to an unknown account. The current project has no Auth user with the teacher email yet.
