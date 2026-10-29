@@ -99,6 +99,18 @@ alter table public.score_assessments enable row level security;
 alter table public.score_scores enable row level security;
 alter table public.score_student_lookup_attempts enable row level security;
 
+-- Remove any default/public table grants first. Only authenticated teacher policies
+-- and the server-only service_role should have access to these isolated score tables.
+revoke all privileges on table
+  public.score_profiles,
+  public.score_classrooms,
+  public.score_subjects,
+  public.score_students,
+  public.score_assessments,
+  public.score_scores,
+  public.score_student_lookup_attempts
+from anon, PUBLIC;
+
 -- Expose only the privileges required by authenticated teachers. The Edge Functions
 -- use server-side credentials for student lookup/PIN writes; never expose those keys.
 grant usage on schema public to authenticated;
