@@ -71,7 +71,7 @@ Deno.serve(async (req: Request) => {
     const salt = hex(crypto.getRandomValues(new Uint8Array(16)));
     const hash = await hashPin(pin, salt);
     const { error: updateError } = await admin.from("score_students").update({
-      pin_hash: `pbkdf2-sha256$120000${salt}${hash}`,
+      pin_hash: `pbkdf2-sha256$120000$${salt}$${hash}`,
       updated_at: new Date().toISOString(),
     }).eq("id", studentId);
     if (updateError) throw updateError;
