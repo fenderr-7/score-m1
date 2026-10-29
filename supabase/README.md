@@ -1,11 +1,11 @@
 # คู่มือติดตั้ง Supabase — ระบบคะแนนนักเรียน ม.1
 
-> ยังรอการยืนยัน Supabase organization/project ใหม่ ห้ามรัน migration จนกว่าจะยืนยัน Project Ref
+> โปรเจกต์ใหม่ได้รับการสร้างแล้ว: `kbcdzxoniaonymsmdevz` (`score-phuwanat-m1`). Migration จะถูกใช้กับโปรเจกต์นี้เท่านั้น
 
 ## 1. เชื่อมโปรเจกต์ใหม่
 ```bash
 supabase login
-supabase link --project-ref YOUR_NEW_PROJECT_REF
+supabase link --project-ref kbcdzxoniaonymsmdevz
 ```
 
 ## 2. สร้างตาราง
@@ -33,7 +33,7 @@ supabase functions deploy student-score-lookup
 ```
 
 ## 5. ตั้งค่าเว็บ
-ใส่ Project URL และ Publishable key ใน `config.js`. ห้ามใส่ Service Role/Secret key ใน client-side code.
+ค่า Project URL และ Publishable key ได้ตั้งไว้ใน `config.js` แล้ว. ห้ามใส่ Service Role/Secret key ใน client-side code.
 
 ## 6. ทดสอบความปลอดภัย
 ตรวจ Security Advisors, RLS, การจำกัดห้องของครู, PIN ผิด, และยืนยันนักเรียนเห็นเฉพาะคะแนนตัวเองผ่าน Edge Function
