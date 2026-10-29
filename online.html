@@ -50,7 +50,7 @@ const hasAuthCallback=isRecoveryFlow||urlParams.has('error')||hashParams.has('er
 let recoveryMode=isRecoveryFlow;
 const sb=window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 let user=null,classes=[],subjects=[],students=[],assessments=[],scores=[],classId='',subjectId='';
-function showRecovery(){recoveryMode=true;$('studentLookup').classList.add('hidden');$('loginArea').classList.add('hidden');$('teacherArea').classList.add('hidden');$('resetArea').classList.remove('hidden');$('logout').classList.add('hidden');}
+function showRecovery(){recoveryMode=true;$('studentLookup').classList.add('hidden');$('loginArea').classList.add('hidden');$('teacherArea').classList.add('hidden');$('resetArea').classList.remove('hidden');$('logout').classList.add('hidden');$('changePassword').classList.add('hidden');}
 if(isRecoveryFlow)showRecovery();
 sb.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY')showRecovery();});
 function friendly(e){const s=e?.message||String(e);if(/column .* does not exist|schema cache|Could not find the .* column/i.test(s))return 'ฐานข้อมูลยังไม่มีคอลัมน์ที่ระบบต้องใช้ กรุณารัน supabase/schema.sql ใน Supabase → SQL Editor แล้วกดรีเฟรช';if(e?.code==='23505')return 'รหัสนักเรียนนี้ซ้ำกับข้อมูลเดิม กรุณาใช้รหัสอื่น';if(e?.code==='42501'||/row-level security|permission denied/i.test(s))return 'ไม่มีสิทธิ์ทำรายการ กรุณาตรวจสอบว่าโปรไฟล์มี role เป็น teacher/admin และ RLS ตั้งค่าแล้ว';return s}
