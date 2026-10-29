@@ -1,0 +1,8 @@
+# Replace with the new project's ref after creating/linking it.
+project_id = "YOUR_NEW_PROJECT_REF"
+
+[functions.student-score-lookup]
+verify_jwt = false
+
+[functions.set-student-pin]
+verify_jwt = true
