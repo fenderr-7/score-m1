@@ -192,4 +192,4 @@ with check (exists (
 
 -- A pending profile is not allowed to create classes or change grades until a trusted admin
 -- explicitly promotes it to role='teacher' or role='admin' in the Supabase SQL Editor.
-commit();
+commit;
