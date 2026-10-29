@@ -5,7 +5,7 @@ Repository: https://fenderr-7.github.io/score-m1/
 ## สถานะ
 - Source transferred into a new Repository for the new account.
 - The application now refers to a separate `score_*` table namespace.
-- Supabase is **not yet configured** in this repository: `config.js` is a placeholder until the correct new account/project can be verified.
+- Supabase project is configured for `https://kbcdzxoniaonymsmdevz.supabase.co` (ref `kbcdzxoniaonymsmdevz`). The schema must still be applied and Edge Functions deployed/tested before production use.
 - Do not run SQL against the existing breakfast or homecoming project.
 
 ## ฟังก์ชัน
@@ -23,8 +23,8 @@ Repository: https://fenderr-7.github.io/score-m1/
 - `.github/workflows/pages.yml` — เผยแพร่ผ่าน GitHub Pages
 
 ## ขั้นตอนก่อนเปิดใช้
-1. ยืนยัน Supabase account/organization ใหม่และสร้างโปรเจกต์คะแนน หลังตรวจสอบโควตาและค่าใช้จ่าย
-2. อัปเดต `config.js` ด้วย URL และ Publishable key ของโปรเจกต์ใหม่เท่านั้น
+1. ตรวจว่า schema และ Edge Functions ของโปรเจกต์คะแนนถูกติดตั้งแล้ว
+2. `config.js` ถูกตั้งค่าเป็น URL และ Publishable key ของโปรเจกต์คะแนนแล้ว
 3. ตรวจทานและรัน migration เฉพาะในโปรเจกต์คะแนนใหม่
 4. สร้างบัญชีครูใน Authentication และกำหนด role ผ่าน `score_profiles`
 5. Deploy Edge Functions พร้อม secrets ฝั่ง server
