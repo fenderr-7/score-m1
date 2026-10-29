@@ -3,9 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="refresh" content="0;url=./online.html">
 <title>ระบบเก็บคะแนนนักเรียน ม.1</title>
-<script>location.replace(new URL("./online.html", location.href).href);</script>
+<script>
+(function () {
+  // Preserve Supabase Auth callback query/hash tokens while moving to the app page.
+  const target = new URL("./online.html", window.location.href);
+  target.search = window.location.search;
+  target.hash = window.location.hash;
+  window.location.replace(target.href);
+})();
+</script>
 </head>
 <body style="font-family:system-ui,Tahoma,sans-serif;padding:2rem;color:#16324a">
 กำลังเปิดระบบเก็บคะแนนนักเรียน ม.1…
